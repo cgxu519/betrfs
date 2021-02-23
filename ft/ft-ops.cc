@@ -2025,12 +2025,12 @@ void toku_destroy_ftnode_internals(FTNODE node)
             }
             set_BNULL(node, i);
             DBT * DBT_debug = &BP_LIFT(node, i);
-            if (DBT_debug->size != 0) printk(KERN_ALERT "2)%d, flag=%d\n", DBT_debug->size, DBT_debug->flags);
+            if (DBT_debug->size != 0) printk(KERN_ALERT "2)%d, flag=%X, %p\n", DBT_debug->size, DBT_debug->flags, DBT_debug->data);
             //if (DBT_debug->data) assert(DBT_debug->size != 0);
 
             toku_destroy_dbt(&BP_LIFT(node, i));
             DBT_debug = &BP_NOT_LIFTED(node, i);
-            if (DBT_debug->size != 0) printk(KERN_ALERT "3)%d, flag=%d\n", DBT_debug->size, DBT_debug->flags);
+            if (DBT_debug->size != 0) printk(KERN_ALERT "3)%d, flag=%X, %p\n", DBT_debug->size, DBT_debug->flags, DBT_debug->data);
             //if (DBT_debug->data) assert(DBT_debug->size != 0);
             toku_destroy_dbt(&BP_NOT_LIFTED(node, i));
         }
